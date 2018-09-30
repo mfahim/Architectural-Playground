@@ -1,0 +1,20 @@
+FROM microsoft/aspnetcore:2.0 AS base
+WORKDIR /app
+EXPOSE 5009
+
+FROM microsoft/aspnetcore-build:2.0 AS build
+WORKDIR /src
+COPY *.sln ./
+COPY Isc.Apis.MicroServices.Animal/Isc.Apis.MicroServices.Animal.csproj Isc.Apis.MicroServices.Animal/
+RUN dotnet restore
+COPY . .
+WORKDIR /src/Isc.Apis.MicroServices.Animal
+RUN dotnet build -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "Isc.Apis.MicroServices.Animal.dll"]
