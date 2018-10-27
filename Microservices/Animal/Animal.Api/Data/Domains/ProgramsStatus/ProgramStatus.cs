@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using MicroServices.Animal.Api.Data.Domains.Property;
-using Nlis.Standard.CommonPackages.Apis.Enums;
 
 namespace MicroServices.Animal.Api.Data.Domains.ProgramsStatus
 {
@@ -60,16 +59,5 @@ namespace MicroServices.Animal.Api.Data.Domains.ProgramsStatus
 
 		public virtual ICollection<ProgramStatusSpecies> AllowedSpecies { get; set; }
 
-		public bool Is(ProgramCode programCode,
-			Nlis.Standard.CommonPackages.Apis.Enums.ProgramStatus.ProgramStatusCode programStatusCode)
-		{
-			if (Program == null)
-				return false;
-
-			if (StatusCode.ToUpper() == programStatusCode.ToString() && Program.ProgramCode.ToUpper() == programCode.ToString())
-				return true;
-
-			return false;
-		}
 	}
 }

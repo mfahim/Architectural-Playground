@@ -5,14 +5,10 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
-using Nlis.Standard.CommonPackages.Apis.Configuration;
-using Nlis.Standard.CommonPackages.Apis.Constants;
-using Nlis.Standard.CommonPackages.Apis.Extensions;
-using Nlis.Standard.CommonPackages.Apis.Logging;
-using Nlis.Standard.CommonPackages.Apis.Logging.Implementation;
+using MicroServices.Animal.Api.Infrastructure.AuofacModule;
+using MicroServices.Animal.Api.Infrastructure.Configuration;
 using Serilog.Events;
 
 namespace MicroServices.Animal.Api.Middleware
@@ -54,7 +50,7 @@ namespace MicroServices.Animal.Api.Middleware
 				{
 					request.Headers.Add(HttpHeaders.InternalRequestIdHeader,
 						Guid.NewGuid().ToString());
-					request.Headers.Add(ReferenceEndpointKey, request.GetUri().ToResourceKey());
+					request.Headers.Add(ReferenceEndpointKey, request.GetUri().ToString());
 				}
 
 				var stopwatch = Stopwatch.StartNew();
@@ -136,14 +132,6 @@ namespace MicroServices.Animal.Api.Middleware
 			response.Body.Seek(0, SeekOrigin.Begin);
 
 			return text;
-		}
-	}
-
-	public static class HealthCheckMiddlewareExtensions
-	{
-		public static IApplicationBuilder UseHealthCheck(this IApplicationBuilder builder, string path)
-		{
-			return builder.UseMiddleware<HealthCheckMiddleware>(path);
 		}
 	}
 }

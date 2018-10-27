@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using Nlis.Standard.CommonPackages.Apis.Enums;
 
 namespace MicroServices.Animal.Api.Data.Domains.Property
 {

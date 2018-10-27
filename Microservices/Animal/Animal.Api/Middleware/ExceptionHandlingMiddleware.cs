@@ -3,14 +3,11 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Rest;
+using MicroServices.Animal.Api.Common.Cqrs;
+using MicroServices.Animal.Api.Common.Exceptions;
+using MicroServices.Animal.Api.Infrastructure.AuofacModule;
+using MicroServices.Animal.Api.Infrastructure.Configuration;
 using Newtonsoft.Json;
-using Nlis.Standard.CommonPackages.Apis.Communication;
-using Nlis.Standard.CommonPackages.Apis.Configuration;
-using Nlis.Standard.CommonPackages.Apis.Cqrs;
-using Nlis.Standard.CommonPackages.Apis.Exceptions;
-using Nlis.Standard.CommonPackages.Apis.Extensions;
-using Nlis.Standard.CommonPackages.Apis.Logging;
-using Nlis.Standard.CommonPackages.Apis.Logging.Implementation;
 using Serilog.Events;
 
 namespace MicroServices.Animal.Api.Middleware

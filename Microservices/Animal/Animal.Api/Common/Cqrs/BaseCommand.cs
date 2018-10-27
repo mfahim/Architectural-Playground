@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Specialized;
-using Nlis.Standard.CommonPackages.Apis.Constants;
 
 namespace MicroServices.Animal.Api.Common.Cqrs
 {
@@ -28,9 +27,6 @@ namespace MicroServices.Animal.Api.Common.Cqrs
 		protected NameValueCollection CommandBag { get; }
 
 		public RuleResultModel[] RuleResults { get; private set; }
-
-		public bool IsBridgeRequest => string.Equals(ClientId,
-			ClientIds.BridgeClientId, StringComparison.OrdinalIgnoreCase);
 
 		public void AddToCommandBag(string key, string value)
 		{

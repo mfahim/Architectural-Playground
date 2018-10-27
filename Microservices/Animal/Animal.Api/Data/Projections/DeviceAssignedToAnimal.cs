@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using MicroServices.Animal.Api.Data.Domains.Device;
-using Device = Nlis.Standard.CommonPackages.Apis.Enums.Device;
 
 namespace MicroServices.Animal.Api.Data.Projections
 {
@@ -52,7 +51,7 @@ namespace MicroServices.Animal.Api.Data.Projections
 			get
 			{
 				if (!_species.HasValue)
-					_species = (byte) Nlis.Standard.CommonPackages.Apis.Enums.Animal.Species.U;
+					_species = (byte)Common.Animal.Species.U;
 
 				return _species.Value;
 			}
@@ -67,15 +66,5 @@ namespace MicroServices.Animal.Api.Data.Projections
 		public long? LastModifiedRequestID { get; set; }
 
 		public DeviceAssignment DeviceAssignment { get; set; }
-
-		public bool IsActive
-		{
-			get
-			{
-				if (ExcludedReasonID == (short) Device.ExcludedReason.Inactive)
-					return false;
-				return true;
-			}
-		}
 	}
 }

@@ -1,5 +1,5 @@
-﻿using Nlis.Standard.CommonPackages.Apis.Cqrs;
-using Nlis.Standard.CommonPackages.Apis.Cqrs.Response;
+﻿using MicroServices.Animal.Api.Common.Cqrs;
+using MicroServices.Animal.Api.Infrastructure.Configuration;
 
 namespace MicroServices.Animal.Api.Features.Animal.Cqrs.Responses.Commands
 {
