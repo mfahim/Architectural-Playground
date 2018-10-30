@@ -11,37 +11,6 @@ using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Commands;
 
 namespace MicroServices.Animal.Api.Infrastructure.Configuration
 {
-	public interface ILogMessage
-	{
-		string ApplicationName { get; }
-		string LogEventLevel { get; }
-		string RequestId { get; }
-		string MachineName { get; }
-		object Request { get; }
-		object Response { get; }
-		string Message { get; }
-		string InternalRequestId { get; }
-		string UserId { get; }
-		string ClientId { get; }
-		string ClientIpAddress { get; }
-		DateTime Time { get; }
-		double? ProcessingTime { get; }
-		string RequestUri { get; }
-		string Exception { get; }
-		string Endpoint { get; }
-	}
-
-	public interface IBusinessRule<TRequest, TResponse>
-	{
-		Task<RuleResultModel> Evaluate(TRequest request, TResponse queryResponse);
-		string RuleId { get; }
-	}
-
-	// placeholder for future animal settings
-	public interface IAnimalMicroServiceSetting : IConfigurationSetting
-	{
-	}
-
 	public static class NlisEitherExtensions
 	{
 		public static DispatcherResponse<T> ToResult<T>(this Either<ExceptionResponse, T> @this) where T : BaseResponseType
@@ -88,37 +57,6 @@ namespace MicroServices.Animal.Api.Infrastructure.Configuration
 
 			return new RestResult(restContent, statusCode);
 		}
-	}
-
-	public class DispatcherResponse<T> where T : BaseResponseType
-	{
-		public bool Succeeded { get; }
-		public bool Failed => !Succeeded;
-
-		public T Data { get; }
-		public ExceptionResponse Exception { get; }
-
-		internal DispatcherResponse(T data)
-		{
-			Succeeded = true;
-			Data = data;
-		}
-		internal DispatcherResponse(ExceptionResponse exception) { Exception = exception; }
-	}
-
-	public class BadRequestException : ApplicationException
-	{
-		public BadRequestException(string errorContent) : base(errorContent)
-		{ }
-
-		public static RestContent CreateRestContent(string errorContent)
-		{
-			if (string.IsNullOrEmpty(errorContent))
-				return RestContent.CreateWithGenericError("Bad Request");
-
-			return RestContent.CreateWithGenericError(errorContent);
-		}
-		public static HttpStatusCode HttpStatus() => HttpStatusCode.BadRequest;
 	}
 
 	public class MemoryCachingService : ICachingService

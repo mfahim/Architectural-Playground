@@ -1,5 +1,6 @@
 using System;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 using Serilog.Events;
 
 namespace MicroServices.Animal.Api.Middleware

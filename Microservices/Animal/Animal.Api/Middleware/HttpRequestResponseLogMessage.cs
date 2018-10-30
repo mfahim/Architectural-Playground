@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using Microsoft.AspNetCore.Http;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 
 namespace MicroServices.Animal.Api.Middleware
 {

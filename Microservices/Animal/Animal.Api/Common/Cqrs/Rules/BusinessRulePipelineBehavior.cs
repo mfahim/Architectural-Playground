@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Rest;
-using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 
 namespace MicroServices.Animal.Api.Common.Cqrs.Rules
 {
@@ -12,9 +12,9 @@ namespace MicroServices.Animal.Api.Common.Cqrs.Rules
 		where TRequest : IRequest<TResponse>
 		where TResponse : BaseBusinessRuleQueryResponse
 	{
-		private readonly Infrastructure.Configuration.IBusinessRule<TRequest, TResponse>[] _businessRuleRequest;
+		private readonly IBusinessRule<TRequest, TResponse>[] _businessRuleRequest;
 
-		public BusinessRulePipelineBehavior(Infrastructure.Configuration.IBusinessRule<TRequest, TResponse>[] businessRuleRequest)
+		public BusinessRulePipelineBehavior(IBusinessRule<TRequest, TResponse>[] businessRuleRequest)
 		{
 			_businessRuleRequest = businessRuleRequest;
 		}
