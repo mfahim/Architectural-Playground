@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using LanguageExt;
-using Microsoft.Extensions.Caching.Memory;
 using MicroServices.Animal.Api.Common.Cqrs;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Commands;
 
@@ -56,79 +51,6 @@ namespace MicroServices.Animal.Api.Infrastructure.Configuration
 				errors.Any() ? errors : null, warnings.Any() ? warnings : null, infos.Any() ? infos : null);
 
 			return new RestResult(restContent, statusCode);
-		}
-	}
-
-	public class MemoryCachingService : ICachingService
-	{
-		private readonly TimeSpan _defaultExpirationTimeSpan;
-		private readonly ConcurrentDictionary<string, SemaphoreSlim> _locks;
-		private readonly IMemoryCache _cache;
-
-		public MemoryCachingService(TimeSpan defaultExpirationTimeSpan)
-		{
-			this._defaultExpirationTimeSpan = defaultExpirationTimeSpan;
-			this._locks = new ConcurrentDictionary<string, SemaphoreSlim>();
-			this._cache = new MemoryCache(new MemoryCacheOptions());
-		}
-
-		public async Task<T> Get<T>(string key, TimeSpan? expireIn = null)
-		{
-			return await Get(key, expireIn ?? _defaultExpirationTimeSpan, () => Task.Run(() => default(T)));
-		}
-
-		public async Task<T> Get<T>(string key, Func<Task<T>> method)
-		{
-			return await Get(key, _defaultExpirationTimeSpan, method);
-		}
-
-		public async Task<T> Get<T>(string key, TimeSpan expireIn, Func<Task<T>> method)
-		{
-			if (string.IsNullOrWhiteSpace(key))
-			{
-				throw new ArgumentNullException(nameof(key));
-			}
-			var result = this._cache.Get(key);
-			if (result != null)
-				return (T)result;
-
-			var keyLock = _locks.GetOrAdd(key, x => new SemaphoreSlim(1));
-			await keyLock.WaitAsync();
-
-			try
-			{
-				result = this._cache.Get(key);
-				if (result != null)
-					return (T)result;
-
-				var cacheItemPolicy = new MemoryCacheEntryOptions() { AbsoluteExpiration = new DateTimeOffset(DateTime.Now.Add(expireIn)) };
-				result = await method();
-				if (result != null)
-				{
-					this._cache.Set(key, result, cacheItemPolicy);
-				}
-			}
-			finally
-			{
-				keyLock.Release();
-			}
-
-			return (T)(result ?? default(T));
-		}
-
-		public void Clear(string key)
-		{
-			if (string.IsNullOrWhiteSpace(key))
-			{
-				throw new ArgumentNullException(nameof(key));
-			}
-			if (_cache.TryGetValue(key, out string value))
-				this._cache.Remove(key);
-		}
-
-		public void Dispose()
-		{
-			this._cache.Dispose();
 		}
 	}
 }
