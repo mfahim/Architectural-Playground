@@ -1,4 +1,5 @@
 ﻿using System;
+using MicroServices.Animal.Api.Extensions;
 using MicroServices.Animal.Api.Features.Animal.Controller;
 
 namespace MicroServices.Animal.Api.Features.Animal

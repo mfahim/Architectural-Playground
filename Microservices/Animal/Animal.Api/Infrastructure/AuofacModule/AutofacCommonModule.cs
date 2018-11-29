@@ -8,11 +8,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using MicroServices.Animal.Api.Common.Cqrs.Rules;
+using MicroServices.Animal.Api.Features;
 using MicroServices.Animal.Api.Features.Animal.Controller;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
 using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
-using ICachingService = MicroServices.Animal.Api.Infrastructure.Configuration.ICachingService;
-using IConfigurationSetting = MicroServices.Animal.Api.Infrastructure.Configuration.IConfigurationSetting;
+using ICachingService = MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces.ICachingService;
+using IConfigurationSetting = MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces.IConfigurationSetting;
 using Module = Autofac.Module;
 
 namespace MicroServices.Animal.Api.Infrastructure.AuofacModule

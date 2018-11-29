@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using MicroServices.Animal.Api.Data;
 using MicroServices.Animal.Api.Data.Factories;
+using MicroServices.Animal.Api.Features;
 using MicroServices.Animal.Api.Features.Animal.Controller;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
 using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;

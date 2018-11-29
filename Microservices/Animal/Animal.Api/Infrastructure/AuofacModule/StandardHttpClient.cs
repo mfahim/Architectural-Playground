@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 using Newtonsoft.Json;
 
 namespace MicroServices.Animal.Api.Infrastructure.AuofacModule

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using MicroServices.Animal.Api.Common.Cqrs;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

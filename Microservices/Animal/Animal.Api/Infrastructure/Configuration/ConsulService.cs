@@ -4,7 +4,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
+using MicroServices.Animal.Api.Extensions;
+using MicroServices.Animal.Api.Features;
 using MicroServices.Animal.Api.Features.Animal.Controller;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

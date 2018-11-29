@@ -6,6 +6,7 @@ using MicroServices.Animal.Api.Extensions;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Commands;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Queries;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 
 namespace MicroServices.Animal.Api.Features.Animal.Controller
 {
@@ -29,7 +30,7 @@ namespace MicroServices.Animal.Api.Features.Animal.Controller
 
 			var restResult = createAnimalResponse.ToRestResult(HttpStatusCode.NotFound);
 
-			return NlisObjectResultExtension.CreateResponse(restResult);
+			return ObjectResultExtension.CreateResponse(restResult);
 		}
 
 		[HttpGet]
@@ -47,7 +48,7 @@ namespace MicroServices.Animal.Api.Features.Animal.Controller
 			var createAnimalResponse = await _mediator.Send(query);
 			var restResult = createAnimalResponse.ToRestResult(HttpStatusCode.NotFound);
 
-			return NlisObjectResultExtension.CreateResponse(restResult);
+			return ObjectResultExtension.CreateResponse(restResult);
 		}
 
 
@@ -63,16 +64,7 @@ namespace MicroServices.Animal.Api.Features.Animal.Controller
 
 			var result = createAnimalResponse.ToRestResult(HttpStatusCode.Created);
 
-			return NlisObjectResultExtension.CreateResponse(result);
+			return ObjectResultExtension.CreateResponse(result);
 		}
-	}
-
-	public class Check
-	{
-		public string DeregisterCriticalServiceAfter { get; set; }
-		public string Script { get; set; }
-		public string HTTP { get; set; }
-		public string Interval { get; set; }
-		public string TTL { get; set; }
 	}
 }

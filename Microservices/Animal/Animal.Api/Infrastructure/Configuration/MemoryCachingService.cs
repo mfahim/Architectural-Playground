@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 
 namespace MicroServices.Animal.Api.Infrastructure.Configuration
 {

@@ -4,7 +4,7 @@ using LanguageExt;
 using MicroServices.Animal.Api.Common.Cqrs;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Commands;
 
-namespace MicroServices.Animal.Api.Infrastructure.Configuration
+namespace MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces
 {
 	public static class NlisEitherExtensions
 	{

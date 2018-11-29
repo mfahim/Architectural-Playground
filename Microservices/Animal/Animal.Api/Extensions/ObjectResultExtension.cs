@@ -4,7 +4,7 @@ using MicroServices.Animal.Api.Infrastructure.Configuration;
 
 namespace MicroServices.Animal.Api.Extensions
 {
-	public static class NlisObjectResultExtension
+	public static class ObjectResultExtension
 	{
 		public static ObjectResult CreateResponse(RestResult restResult)
 		{

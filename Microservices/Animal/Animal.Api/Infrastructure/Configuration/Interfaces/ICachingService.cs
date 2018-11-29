@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MicroServices.Animal.Api.Infrastructure.AuofacModule;
 using ValidationOutcome = MicroServices.Animal.Api.Common.Cqrs.ValidationOutcome;
 
-namespace MicroServices.Animal.Api.Infrastructure.Configuration
+namespace MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces
 {
 	public interface ICachingService : IDisposable
 	{

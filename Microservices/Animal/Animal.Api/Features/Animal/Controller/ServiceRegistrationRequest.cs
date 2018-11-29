@@ -12,4 +12,13 @@ namespace MicroServices.Animal.Api.Features.Animal.Controller
 		public bool EnableTagOverride { get; set; }
 		public Check Check { get; set; }
 	}
+
+	public class Check
+	{
+		public string DeregisterCriticalServiceAfter { get; set; }
+		public string Script { get; set; }
+		public string HTTP { get; set; }
+		public string Interval { get; set; }
+		public string TTL { get; set; }
+	}
 }

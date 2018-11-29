@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 
 namespace MicroServices.Animal.Api.Common.Exceptions
 {

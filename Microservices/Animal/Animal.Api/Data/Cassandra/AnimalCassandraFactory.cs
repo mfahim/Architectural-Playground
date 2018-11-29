@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Cassandra;
+using MicroServices.Animal.Api.Features;
 using MicroServices.Animal.Api.Features.Animal.Controller;
 using MicroServices.Animal.Api.Infrastructure.AuofacModule;
 

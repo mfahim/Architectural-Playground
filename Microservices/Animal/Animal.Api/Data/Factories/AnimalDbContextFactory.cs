@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using MicroServices.Animal.Api.Features;
 using MicroServices.Animal.Api.Features.Animal.Controller;
 
 namespace MicroServices.Animal.Api.Data.Factories

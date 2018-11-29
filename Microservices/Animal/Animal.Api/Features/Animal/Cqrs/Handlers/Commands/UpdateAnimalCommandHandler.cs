@@ -13,6 +13,7 @@ using MicroServices.Animal.Api.Data.Projections;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Commands;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Responses.Commands;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 
 namespace MicroServices.Animal.Api.Features.Animal.Cqrs.Handlers.Commands
 {

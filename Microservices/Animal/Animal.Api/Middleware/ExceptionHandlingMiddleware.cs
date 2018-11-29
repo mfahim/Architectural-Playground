@@ -7,6 +7,7 @@ using MicroServices.Animal.Api.Common.Cqrs;
 using MicroServices.Animal.Api.Common.Exceptions;
 using MicroServices.Animal.Api.Infrastructure.AuofacModule;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 using Newtonsoft.Json;
 using Serilog.Events;
 

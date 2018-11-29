@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using MicroServices.Animal.Api.Infrastructure.AuofacModule;
 using MicroServices.Animal.Api.Infrastructure.Configuration;
+using MicroServices.Animal.Api.Infrastructure.Configuration.Interfaces;
 using Serilog.Events;
 
 namespace MicroServices.Animal.Api.Middleware

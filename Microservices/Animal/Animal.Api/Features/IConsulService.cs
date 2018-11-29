@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
+using MicroServices.Animal.Api.Features.Animal.Controller;
 
-namespace MicroServices.Animal.Api.Features.Animal.Controller
+namespace MicroServices.Animal.Api.Features
 {
 	public interface IConsulService
 	{

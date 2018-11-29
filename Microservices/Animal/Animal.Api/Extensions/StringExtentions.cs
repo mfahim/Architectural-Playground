@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace MicroServices.Animal.Api.Features.Animal.Controller
+namespace MicroServices.Animal.Api.Extensions
 {
 	public static class StringExtentions
 	{
