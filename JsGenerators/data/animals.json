@@ -1,0 +1,12 @@
+[
+	{
+		"name": "Hereford",
+		"location": "data/hereford.json",
+		"missionsUrl": "data/missions.json"
+	},
+	{
+		"name": "Angus",
+		"location": "data/angus.json",
+		"missionsUrl": "data/missions.json"
+	}
+]
