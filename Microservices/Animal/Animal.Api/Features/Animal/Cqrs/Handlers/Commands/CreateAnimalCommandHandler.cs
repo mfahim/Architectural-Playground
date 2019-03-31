@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using MicroServices.Animal.Api.Data;
 using MicroServices.Animal.Api.Data.Domains.Device;
+using MicroServices.Animal.Api.Data.Mementos;
 using MicroServices.Animal.Api.Data.Projections;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Messages.Commands;
 using MicroServices.Animal.Api.Features.Animal.Cqrs.Responses.Commands;
@@ -81,15 +82,7 @@ namespace MicroServices.Animal.Api.Features.Animal.Cqrs.Handlers.Commands
 			int? currentPropertyId, DateTime? latestTransferDate,
 			long? requestId)
 		{
-			var animal = context.Animals.Add(new Data.Domains.Animal.Animal
-			{
-				SpeciesID = deviceDto.Species,
-				OriginPropertyIdentifierID = deviceDto.AssignedToPropertyIdentifierID,
-				CurrentPropertyIdentifierID = currentPropertyId ?? deviceDto.AssignedToPropertyIdentifierID,
-				LatestTransferDate = latestTransferDate,
-				OriginDate = deviceDto.AssignmentDate,
-				CreatedRequestID = requestId ?? 0
-			});
+			var animal = context.Animals.Add(new AnimalMemento(0, DateTime.Now, deviceDto.Species, currentPropertyId ?? deviceDto.AssignedToPropertyIdentifierID, requestId ?? 0));
 
 			var deviceAssignment = new DeviceAssignment
 			{
@@ -98,9 +91,10 @@ namespace MicroServices.Animal.Api.Features.Animal.Cqrs.Handlers.Commands
 				CreatedRequestID = requestId ?? 0
 			};
 			context.DeviceAssignments.Add(deviceAssignment);
-			animal.Entity.DeviceAssignment.Add(deviceAssignment);
+			// todo: refactor after finishing memento
+			//animal.Entity.DeviceAssignment.Add(deviceAssignment);
 
-			return animal.Entity;
+			return Data.Domains.Animal.Animal.FromMemento(animal.Entity);
 		}
 
 		private async Task<Option<DeviceAssignedToAnimal>> GetDeviceByCompositeKey(AnimalContext context,

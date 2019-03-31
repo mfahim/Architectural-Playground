@@ -9,6 +9,7 @@ using MicroServices.Animal.Api.Data.Domains.Device;
 using MicroServices.Animal.Api.Data.Domains.ProgramsStatus;
 using MicroServices.Animal.Api.Data.Domains.Property;
 using MicroServices.Animal.Api.Data.Domains.Reference;
+using MicroServices.Animal.Api.Data.Mementos;
 
 namespace MicroServices.Animal.Api.Data
 {
@@ -20,7 +21,7 @@ namespace MicroServices.Animal.Api.Data
 		{
 		}
 
-		public DbSet<Domains.Animal.Animal> Animals { get; set; }
+		public DbSet<AnimalMemento> Animals { get; set; }
 		public DbSet<ProgramStatus> ProgramStatuses { get; set; }
 		public DbSet<Device> Devices { get; set; }
 		public DbSet<DeviceAssignment> DeviceAssignments { get; set; }

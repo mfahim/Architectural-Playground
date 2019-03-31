@@ -48,10 +48,6 @@ namespace MicroServices.Animal.Api.Features.Animal.Cqrs.Handlers.Commands
 						ErrorMessage: $"animal/{request.AnimalPayload.DeviceCompositeKey}",
 						HttpStatusCode: HttpStatusCode.NotFound);
 
-				var excludedReason = await GetExcludedReasonByCode(context, request.AnimalPayload.ExclusionReason);
-
-				existingAnimal.ExcludedReasonID = excludedReason.ExcludedReasonID;
-				existingAnimal.ExcludedDate = request.AnimalPayload.TransactionDate;
 				existingAnimal.LastModifiedRequestID = request.RequestId;
 
 				await context.SaveChangesAsync(request.RequestId);
