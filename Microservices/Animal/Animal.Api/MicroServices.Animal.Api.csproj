@@ -26,7 +26,7 @@
     <PackageReference Include="MediatR" Version="5.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.8" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.1" />
